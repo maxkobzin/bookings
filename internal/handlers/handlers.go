@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/maxkobzin/bookings/pkg/config"
-	"github.com/maxkobzin/bookings/pkg/models"
-	"github.com/maxkobzin/bookings/pkg/render"
+	"github.com/maxkobzin/bookings/internal/config"
+	"github.com/maxkobzin/bookings/internal/models"
+	"github.com/maxkobzin/bookings/internal/render"
 )
 
 // Repo the repository used by the handlers

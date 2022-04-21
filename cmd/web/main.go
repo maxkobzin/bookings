@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/maxkobzin/bookings/pkg/config"
+	"github.com/maxkobzin/bookings/internal/config"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/maxkobzin/bookings/pkg/handlers"
-	"github.com/maxkobzin/bookings/pkg/render"
+	"github.com/maxkobzin/bookings/internal/handlers"
+	"github.com/maxkobzin/bookings/internal/render"
 )
 
 const portNumber = ":8080"
