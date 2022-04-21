@@ -1,45 +1,53 @@
 {{template "base" .}}
 
+{{define "css"}}
+<style>
+  .datepicker-dropdown {
+    position: inherit;
+  }
+</style>
+{{end}}
+
 {{define "content"}}
 <div class="container">
 
-    <div class="row">
-        <div class="col">
-            <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block room-image"
-                alt="room image">
-        </div>
+  <div class="row">
+    <div class="col">
+      <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block room-image"
+        alt="room image">
     </div>
+  </div>
 
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center" mt-4>General's Quartes</h1>
-            <p>
-                Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a vacation to
-                remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a
-                vacation
-                to remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a
-                vacation to remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this
-                will be
-                a vacation to remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this
-                will
-                be a vacation to remember.
-            </p>
-        </div>
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center" mt-4>General's Quartes</h1>
+      <p>
+        Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a vacation to
+        remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a
+        vacation
+        to remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this will be a
+        vacation to remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this
+        will be
+        a vacation to remember. Your home away form home, set on the majestic waters of the Atlantic Ocean, this
+        will
+        be a vacation to remember.
+      </p>
     </div>
+  </div>
 
-    <div class="row">
-        <div class="col text-center">
-            <a id="check-availability-button" href="#!" class="btn btn-success">Check Availability</a>
-        </div>
+  <div class="row">
+    <div class="col text-center">
+      <a id="check-availability-button" href="#!" class="btn btn-success">Check Availability</a>
     </div>
+  </div>
 
 </div>
 {{end}}
 
 {{define "js"}}
 <script>
-    document.getElementById("check-availability-button").addEventListener("click", function () {
-        let html = `
+  document.getElementById("check-availability-button").addEventListener("click", function () {
+    let html = `
       <form id="check-availability-form" action="" method="post" novalidate class="row g-3 needs-validation">
         <div class="col">
           <div class="row" id="reservation-dates-modal">
@@ -53,9 +61,22 @@
         </div>
       </form>
       `
-        //notify("This is my message", "success")
-        //notifyModal("title","<em>hello, wolrd</em>","success","My text for the button")
-        attention.custom({ msg: html, title: "Choose your dates" });
-    })
+    //notify("This is my message", "success")
+    //notifyModal("title","<em>hello, wolrd</em>","success","My text for the button")
+    attention.custom({
+      msg: html,
+      title: "Choose your dates",
+      callback: function (result) {
+        console.log("called");
+        fetch('/search-availability-json')
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            console.log(data.ok);
+            console.log(data.message);
+          })
+      }
+    });
+  })
 </script>
 {{end}}
