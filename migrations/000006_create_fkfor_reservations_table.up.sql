@@ -1,0 +1,1 @@
+ALTER TABLE "reservations" ADD CONSTRAINT "reservations_rooms_id_fk" FOREIGN KEY ("room_id") REFERENCES "rooms" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
