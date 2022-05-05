@@ -4,5 +4,7 @@ CREATE TABLE IF NOT EXISTS users(
    last_name VARCHAR (255) DEFAULT (''),
    email VARCHAR (255),
    password VARCHAR (60),
-   access_level int DEFAULT (1)
+   access_level int DEFAULT (1),
+   created_at timestamptz NOT NULL DEFAULT (now()),
+   updated_at timestamptz NOT NULL DEFAULT (now())
 );
