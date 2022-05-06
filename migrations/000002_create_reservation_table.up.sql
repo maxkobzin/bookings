@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS reservations(
    phone VARCHAR (255) DEFAULT (''),
    start_date DATE,
    end_date DATE,
-   room_id int,
+   room_id int NOT NULL,
    created_at timestamptz NOT NULL DEFAULT (now()),
    updated_at timestamptz NOT NULL DEFAULT (now())
 );
